@@ -18,11 +18,6 @@ namespace PersonAndProduct
             //The code still runs and works.
             _ = service.CreatePerson();
 
-            //Testing the delete method, that goes by id.
-            Person toDelete = new(14, 69, "To", "Delete");
-            service.Save(toDelete);
-            service.DeletePerson(toDelete.Id);
-
             //Testing all the FindBy...() methods.
             TestMethods();
 
@@ -44,6 +39,11 @@ namespace PersonAndProduct
             Person a = new(2, 48, "Bob", "Testsson");
             Person b = new(3, 23, "Kim", "Testsson");
             Person c = new(4, 36, "Sara", "Testsson");
+
+            //Testing the delete method, that goes by id.
+            Person toDelete = new(14, 69, "To", "Delete");
+            service.Save(toDelete);
+            service.DeletePerson(toDelete.Id);
 
             //Add them to list.
             List<Person> toFind = new();
