@@ -11,7 +11,11 @@ namespace PersonAndProduct.Data
     {
         //The methods to creat, save and read all person objects.
         Person Save(Person person);
+        Person FindById(int id);
+        Person FindByFirstName(String firstName);
+        Person FindByLastName(String lastName);
         Person CreatePerson();
+        void DeletePerson(int id);
         void PrintAll();
 
     }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
-using static System.Convert;
+
 
 namespace PersonAndProduct.Data
 {
@@ -17,7 +17,7 @@ namespace PersonAndProduct.Data
         private static int IdCounter = 0;
 
         //List where all the Person object will be saved.
-        private List<Person> people = new List<Person>();
+        private readonly List<Person> people = new();
 
         //The save method adds the person object in the list people.
         public Person Save(Person person)
@@ -51,6 +51,52 @@ namespace PersonAndProduct.Data
             foreach(Person p in people)
             {
                 WriteLine($"{++count}. {p}");
+            }
+        }
+
+        public Person FindById(int id)
+        {
+            foreach(Person p in people)
+            {
+                if(p.Id.Equals(id))
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        public Person FindByFirstName(string firstName)
+        {
+            foreach(Person p in people)
+            {
+                if(p.FirstName.Equals(firstName))
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        public Person FindByLastName(string lastName)
+        {
+            foreach (Person p in people)
+            {
+                if (p.LastName.Equals(lastName))
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        public void DeletePerson(int id)
+        {
+            //Using FindById method to delete that person.
+            Person toDelete = FindById(id);
+            if(people.Contains(toDelete))
+            {
+                people.Remove(toDelete);
             }
         }
     }
