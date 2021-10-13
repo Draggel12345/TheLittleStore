@@ -19,16 +19,6 @@ namespace PersonAndProduct.Data
         //List where all the Person object will be saved.
         private readonly List<Person> people = new();
 
-        //The save method adds the person object in the list people.
-        public Person Save(Person person)
-        {
-            //If the same person is in the list, dont add that person.
-            if (!people.Contains(person))
-            {
-                people.Add(person);
-            }
-            return person;
-        }
         //When the program is running, asks for user input and then saves the new person object in the people list.
         public Person CreatePerson()
         {
@@ -43,41 +33,28 @@ namespace PersonAndProduct.Data
 
             return Save(new Person(id, age, firstName, lastName));
         }
-
-        //Prints all the person objects in the list. Count is for a lovely number before every object.
-        public void PrintAll()
-        {
-            int count = 0;
-            foreach(Person p in people)
-            {
-                WriteLine($"{++count}. {p}");
-            }
-        }
-
         public Person FindById(int id)
         {
-            foreach(Person p in people)
+            foreach (Person p in people)
             {
-                if(p.Id.Equals(id))
+                if (p.Id.Equals(id))
                 {
                     return p;
                 }
             }
             return null;
         }
-
         public Person FindByFirstName(string firstName)
         {
-            foreach(Person p in people)
+            foreach (Person p in people)
             {
-                if(p.FirstName.Equals(firstName))
+                if (p.FirstName.Equals(firstName))
                 {
                     return p;
                 }
             }
             return null;
         }
-
         public Person FindByLastName(string lastName)
         {
             foreach (Person p in people)
@@ -89,12 +66,30 @@ namespace PersonAndProduct.Data
             }
             return null;
         }
-
+        //Prints all the person objects in the list. Count is for a lovely number before every object.
+        public void PrintAll()
+        {
+            int count = 0;
+            foreach (Person p in people)
+            {
+                WriteLine($"{++count}. {p}");
+            }
+        }
+        //The save method adds the person object in the list people.
+        public Person Save(Person person)
+        {
+            //If the same person is in the list, dont add that person.
+            if (!people.Contains(person))
+            {
+                people.Add(person);
+            }
+            return person;
+        }
         public void DeletePerson(int id)
         {
             //Using FindById method to delete that person.
             Person toDelete = FindById(id);
-            if(people.Contains(toDelete))
+            if (people.Contains(toDelete))
             {
                 people.Remove(toDelete);
             }

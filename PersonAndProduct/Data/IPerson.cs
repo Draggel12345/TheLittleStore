@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace PersonAndProduct.Data
 {
-    interface IPerson 
+    interface IPerson
     {
         //The methods to creat, save and read all person objects.
-        Person Save(Person person);
+
+        Person CreatePerson();
         Person FindById(int id);
         Person FindByFirstName(String firstName);
         Person FindByLastName(String lastName);
-        Person CreatePerson();
-        void DeletePerson(int id);
         void PrintAll();
-
+        Person Save(Person person);
+        void DeletePerson(int id);
     }
 }

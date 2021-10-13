@@ -18,13 +18,23 @@ namespace PersonAndProduct.Util
             int integer;
             while (!int.TryParse(ReadLine(), out integer))
             {
-                WriteLine("\nInput has to be an integer.");
+                WriteLine("Input has to be an integer and cant be empty field.");
+                Write("Try again: ");
             }
             return integer;
         }
+
         public string GetString()
         {
-            return ReadLine();
+            //Checks so GetString() returns msg if the string contains digits or IsNullOrEmpty.
+            string str = ReadLine();
+            while (str.Any(char.IsDigit) || string.IsNullOrEmpty(str))
+            {
+                WriteLine("Input has to be letters and cant be empty field.");
+                Write("Try again: ");
+                str = ReadLine();
+            }
+            return str;
         }
     }
 }
